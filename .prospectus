@@ -1,0 +1,16 @@
+require 'open-uri'
+require 'json'
+
+item do
+  expected do
+    static
+    url = 'https://developers.strava.com/swagger/swagger.json'
+    raw = JSON.parse(open(url))
+    set raw['info']['version']
+  end
+
+  actual do
+    git_tag
+    regex /^(.*)-\d+$/
+  end
+end
