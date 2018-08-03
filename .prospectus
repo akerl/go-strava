@@ -5,7 +5,7 @@ item do
   expected do
     static
     url = 'https://developers.strava.com/swagger/swagger.json'
-    raw = JSON.parse(open(url))
+    raw = JSON.parse(open(url).read)
     set raw['info']['version']
   end
 
